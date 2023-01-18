@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EFconASPyMVC.Models.AlumnoTareas>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alumno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tarea)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alumno.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tarea.Id)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { item.AlumnoId, item.TareaId}) |
+                    @Html.ActionLink("Details", "Details", new { item.AlumnoId, item.TareaId}) |
+                    @Html.ActionLink("Delete", "Delete", new { item.AlumnoId, item.TareaId })
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
